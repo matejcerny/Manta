@@ -7,7 +7,7 @@ ThisBuild / assemblyJarName := s"${name.value}.jar"
 
 lazy val manta = project
   .in(file("."))
-  .settings(libraryDependencies ++= Cats ++ Circe ++ Config ++ Http4s ++ Logging ++ Testing)
+  .settings(libraryDependencies ++= Cats ++ Json ++ Config ++ Http ++ Logging ++ Testing)
 
 ThisBuild / scalacOptions ++= Seq(
   "-deprecation", // Emit warning and location for usages of deprecated APIs.

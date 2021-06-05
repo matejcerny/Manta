@@ -11,6 +11,7 @@ object Dependencies {
     val ScalaLogging = "3.9.3"
     val ScalaTest = "3.2.9"
     val SLF4J = "1.7.30"
+    val Tapir = "0.18.0-M15"
   }
 
   private object Modules {
@@ -22,23 +23,22 @@ object Dependencies {
     val ScalaLogging = "com.typesafe.scala-logging"
     val ScalaTest = "org.scalatest"
     val SLF4J = "org.slf4j"
+    val Tapir = "com.softwaremill.sttp.tapir"
   }
 
-  val Cats = Seq(
-    Modules.Cats %% "cats-core" % Versions.CatsCore
+  val Cats = Seq(Modules.Cats %% "cats-core" % Versions.CatsCore)
+  val Config = Seq(Modules.Config %% "configs" % Versions.Config)
+
+  val Json = Seq(
+    Modules.Circe %% "circe-generic" % Versions.Circe,
+    Modules.Tapir %% "tapir-json-circe" % Versions.Tapir
   )
 
-  val Circe = Seq(
-    Modules.Circe %% "circe-generic" % Versions.Circe
-  )
-
-  val Config = Seq(
-    Modules.Config %% "configs" % Versions.Config
-  )
-
-  val Http4s = Seq(
+  val Http = Seq(
     Modules.Http4s %% "http4s-blaze-server" % Versions.Http4s,
-    Modules.Http4s %% "http4s-circe" % Versions.Http4s
+    Modules.Http4s %% "http4s-circe" % Versions.Http4s,
+    Modules.Tapir %% "tapir-core" % Versions.Tapir,
+    Modules.Tapir %% "tapir-http4s-server" % Versions.Tapir
   )
 
   val Logging = Seq(
@@ -47,8 +47,6 @@ object Dependencies {
     Modules.SLF4J % "slf4j-api" % Versions.SLF4J
   )
 
-  val Testing = Seq(
-    Modules.ScalaTest %% "scalatest" % Versions.ScalaTest % Test
-  )
+  val Testing = Seq(Modules.ScalaTest %% "scalatest" % Versions.ScalaTest % Test)
 
 }
