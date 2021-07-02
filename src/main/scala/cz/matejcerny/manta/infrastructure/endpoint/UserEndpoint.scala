@@ -1,6 +1,6 @@
-package cz.matejcerny.manta.endpoint
+package cz.matejcerny.manta.infrastructure.endpoint
 
-import cz.matejcerny.manta.domain.User
+import cz.matejcerny.manta.domain.user.User
 import io.circe.generic.auto._
 import sttp.model.StatusCode
 import sttp.tapir._

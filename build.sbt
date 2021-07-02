@@ -7,7 +7,7 @@ ThisBuild / assemblyJarName := s"${name.value}.jar"
 
 lazy val manta = project
   .in(file("."))
-  .settings(libraryDependencies ++= Cats ++ Json ++ Config ++ Http ++ Logging ++ Testing)
+  .settings(libraryDependencies ++= Cats ++ Doobie ++ Json ++ Config ++ Http ++ Logging ++ Testing)
 
 ThisBuild / scalacOptions ++= Seq(
   "-deprecation", // Emit warning and location for usages of deprecated APIs.
@@ -22,3 +22,5 @@ ThisBuild / scalacOptions ++= Seq(
   "-Xcheckinit", // Wrap field accessors to throw an exception on uninitialized access.
   "-Ywarn-unused:imports", // Warn if an import selector is not referenced.
 )
+
+addCompilerPlugin(KindProjector.cross(CrossVersion.full))

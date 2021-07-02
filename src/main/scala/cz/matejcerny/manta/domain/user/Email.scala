@@ -1,4 +1,4 @@
-package cz.matejcerny.manta.domain
+package cz.matejcerny.manta.domain.user
 
 sealed trait Email
 

@@ -6,7 +6,9 @@ object Dependencies {
     val CatsCore = "2.6.1"
     val Circe = "0.14.1"
     val Config = "0.6.1"
+    val Doobie = "0.13.4"
     val Http4s = "0.21.24"
+    val KindProjector = "0.13.0"
     val Logback = "1.2.3"
     val ScalaLogging = "3.9.3"
     val ScalaTest = "3.2.9"
@@ -18,6 +20,7 @@ object Dependencies {
     val Cats = "org.typelevel"
     val Circe = "io.circe"
     val Config = "com.github.kxbmap"
+    val Doobie = "org.tpolecat"
     val Http4s = "org.http4s"
     val Logback = "ch.qos.logback"
     val ScalaLogging = "com.typesafe.scala-logging"
@@ -29,10 +32,18 @@ object Dependencies {
   val Cats = Seq(Modules.Cats %% "cats-core" % Versions.CatsCore)
   val Config = Seq(Modules.Config %% "configs" % Versions.Config)
 
+  val Doobie = Seq(
+    Modules.Doobie %% "doobie-core" % Versions.Doobie,
+    Modules.Doobie %% "doobie-hikari" % Versions.Doobie,
+    Modules.Doobie %% "doobie-postgres" % Versions.Doobie
+  )
+
   val Json = Seq(
     Modules.Circe %% "circe-generic" % Versions.Circe,
     Modules.Tapir %% "tapir-json-circe" % Versions.Tapir
   )
+
+  val KindProjector = Modules.Cats %% "kind-projector" % Versions.KindProjector
 
   val Http = Seq(
     Modules.Http4s %% "http4s-blaze-server" % Versions.Http4s,
@@ -47,6 +58,10 @@ object Dependencies {
     Modules.SLF4J % "slf4j-api" % Versions.SLF4J
   )
 
-  val Testing = Seq(Modules.ScalaTest %% "scalatest" % Versions.ScalaTest % Test)
+  val Testing = Seq(
+    Modules.Doobie %% "doobie-specs2" % Versions.Doobie % Test,
+    Modules.Doobie %% "doobie-scalatest" % Versions.Doobie % Test,
+    Modules.ScalaTest %% "scalatest" % Versions.ScalaTest % Test
+  )
 
 }

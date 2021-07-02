@@ -1,4 +1,6 @@
-package cz.matejcerny.manta.domain
+package cz.matejcerny.manta.domain.user
+
+import cz.matejcerny.manta.domain.String50
 
 case class User(
   email: Email,
