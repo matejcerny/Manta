@@ -1,17 +1,18 @@
 package cz.matejcerny.manta
 
-import cats.effect._
-import cats.implicits._
-import com.typesafe.scalalogging.LazyLogging
+import cats.effect.*
+import cats.implicits.*
 import cz.matejcerny.manta.config.AppConfig
 
-object Manta extends IOApp with LazyLogging {
+object Manta extends IOApp {
 
-  def runServer[F[_]: ContextShift: ConcurrentEffect: Timer]: Resource[F, Unit] =
+  def build: Resource[IO, Unit] =
     for {
-      appConfig <- Resource.eval(AppConfig[F]())
-    } yield println(appConfig)
+      appConfig <- AppConfig.resource
+      _ <- Resource.eval(IO(println(appConfig)))
+    } yield ()
+  
+  override def run(args: List[String]): IO[ExitCode] =
+    build.use(_ => IO.unit).as(ExitCode.Success)
 
-  def run(args: List[String]): IO[ExitCode] =
-    runServer.use(_ => IO.unit).as(ExitCode.Success)
 }

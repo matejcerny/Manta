@@ -1,2 +1,2 @@
-addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.15.0")
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.8.2")
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.0.0")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "2.0.6")
