@@ -6,12 +6,12 @@ import ciris.*
 import cz.matejcerny.manta.config.AppConfig.*
 
 case class AppConfig(
-    http: Http,
-    database: Database
+    http: HttpConfig,
+    db: DbConfig
 )
 
-object AppConfig {
-  object Defaults {
+object AppConfig:
+  object Defaults:
     val HttpHost = "localhost"
     val HttpPort = 8080
     val DatabaseUser = "postgres"
@@ -19,13 +19,11 @@ object AppConfig {
     val DatabaseUrl = "jdbc:postgresql://localhost:5432/postgres"
     val DatabaseDriver = "org.postgresql.Driver"
     val DatabaseSchema = "manta"
-  }
+    val DatabaseThreadPoolSize = 2
 
   def resource: Resource[IO, AppConfig] =
     Resource.eval(
-      (Http.load, Database.load)
+      (HttpConfig.load, DbConfig.load)
         .parMapN(AppConfig.apply)
         .load[IO]
     )
-
-}
