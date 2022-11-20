@@ -3,27 +3,28 @@ import sbt._
 object Dependencies {
 
   private object Versions {
-    val CatsCore = "2.8.0"
-    val CatsEffect = "3.3.14"
-    val Circe = "0.14.3"
-    val Config = "3.0.0"
-    val Http4s = "0.23.12"
-    val Logback = "1.4.4"
-    val ScalaLogging = "3.9.5"
-    val ScalaTest = "3.2.14"
-    val SLF4J = "2.0.3"
-    val Tapir = "1.2.0"
+    val CatsCore = "2.9.0"
+    val CatsEffect = "3.4.8"
+    val Circe = "0.14.5"
+    val Ciris = "3.1.0"
+    val Doobie = "1.0.0-RC1"
+    val Flyway = "9.16.0"
+    val Http4s = "0.23.18"
+    val Logback = "1.4.6"
+    val Log4Cats = "2.5.0"
+    val ScalaTest = "3.2.15"
+    val Tapir = "1.2.10"
   }
 
   private object Modules {
     val Cats = "org.typelevel"
     val Circe = "io.circe"
     val Config = "is.cir"
+    val Doobie = "org.tpolecat"
+    val Flyway = "org.flywaydb"
     val Http4s = "org.http4s"
     val Logback = "ch.qos.logback"
-    val ScalaLogging = "com.typesafe.scala-logging"
     val ScalaTest = "org.scalatest"
-    val SLF4J = "org.slf4j"
     val Tapir = "com.softwaremill.sttp.tapir"
   }
 
@@ -37,7 +38,14 @@ object Dependencies {
   )
 
   val Config: Seq[ModuleID] = Seq(
-    Modules.Config %% "ciris" % Versions.Config
+    Modules.Config %% "ciris" % Versions.Ciris
+  )
+
+  val Doobie: Seq[ModuleID] = Seq(
+    Modules.Doobie %% "doobie-core" % Versions.Doobie,
+    Modules.Doobie %% "doobie-postgres" % Versions.Doobie,
+    Modules.Doobie %% "doobie-hikari" % Versions.Doobie,
+    Modules.Flyway % "flyway-core" % Versions.Flyway,
   )
 
   val Http4s: Seq[ModuleID] = Seq(
@@ -47,8 +55,7 @@ object Dependencies {
 
   val Logging: Seq[ModuleID] = Seq(
     Modules.Logback % "logback-classic" % Versions.Logback,
-    Modules.ScalaLogging %% "scala-logging" % Versions.ScalaLogging,
-    Modules.SLF4J % "slf4j-api" % Versions.SLF4J
+    Modules.Cats %% "log4cats-slf4j" % Versions.Log4Cats
   )
 
   val Tapir: Seq[ModuleID] = Seq(
