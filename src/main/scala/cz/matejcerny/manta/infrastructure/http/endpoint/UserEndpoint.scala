@@ -7,8 +7,7 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 
-object UserEndpoint {
-
+object UserEndpoint:
   // TODO: change public endpoint to secured
   val ListAllUsers: PublicEndpoint[Unit, (StatusCode, String), Seq[User], Any] =
     endpoint.get
@@ -17,5 +16,3 @@ object UserEndpoint {
       .out(jsonBody[Seq[User]])
       .errorOut(statusCode)
       .errorOut(stringBody)
-
-}
