@@ -6,8 +6,8 @@ import cz.matejcerny.manta.config.{ AppConfig, HttpConfig }
 import org.http4s.HttpRoutes
 import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.server.{ Router, Server }
-import sttp.tapir.server.http4s.Http4sServerInterpreter
 import sttp.tapir.server.ServerEndpoint
+import sttp.tapir.server.http4s.Http4sServerInterpreter
 
 object HttpServer {
   case class Routes(underlying: HttpRoutes[IO])

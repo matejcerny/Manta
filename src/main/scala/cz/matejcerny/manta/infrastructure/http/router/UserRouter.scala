@@ -7,6 +7,6 @@ import cz.matejcerny.manta.service.UserService
 import sttp.tapir.server.ServerEndpoint
 
 class UserRouter[F[_]](userService: UserService):
-  val endpoints: List[ServerEndpoint[Any, F]] = List(
+  val endpoints: List[ServerEndpoint[Any, IO]] = List(
     UserEndpoint.ListAllUsers.serverLogicSuccess(_ => userService.listAllUsers)
   )
