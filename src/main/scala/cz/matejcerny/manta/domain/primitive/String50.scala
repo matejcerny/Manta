@@ -1,6 +1,6 @@
-package cz.matejcerny.manta.domain
+package cz.matejcerny.manta.domain.primitive
 
-import cats.data.{ Validated, ValidatedNel }
+import cats.data.Validated
 
 opaque type String50 = String
 
@@ -11,5 +11,5 @@ object String50:
     Validated.cond(
       value.length <= 50,
       value,
-      s"$value is longer than 50 characters"
+      s"'$value' is longer than 50 characters"
     )

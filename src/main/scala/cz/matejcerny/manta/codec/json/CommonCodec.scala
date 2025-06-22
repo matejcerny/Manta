@@ -1,6 +1,6 @@
 package cz.matejcerny.manta.codec.json
 
-import cz.matejcerny.manta.domain.String50
+import cz.matejcerny.manta.domain.primitive.String50
 import io.circe.{ Decoder, Encoder }
 
 object CommonCodec:

@@ -4,7 +4,7 @@ import cats.data.Validated
 import cats.effect.IO
 import cats.implicits.catsSyntaxTuple3Semigroupal
 import cats.syntax.option.*
-import cz.matejcerny.manta.domain.String50
+import cz.matejcerny.manta.domain.primitive.String50
 import cz.matejcerny.manta.domain.user.*
 import cz.matejcerny.manta.repository.UserRepository
 

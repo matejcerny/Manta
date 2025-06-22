@@ -1,7 +1,7 @@
 package cz.matejcerny.manta.infrastructure.db
 
 import cats.effect.kernel.Sync
-import cats.effect.{IO, Resource}
+import cats.effect.{ IO, Resource }
 import cz.matejcerny.manta.config.DbConfig
 import doobie.hikari.HikariTransactor
 import doobie.util.ExecutionContexts

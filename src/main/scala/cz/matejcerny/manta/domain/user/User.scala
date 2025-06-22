@@ -1,7 +1,7 @@
 package cz.matejcerny.manta.domain.user
 
+import cz.matejcerny.manta.domain.primitive.String50
 import cz.matejcerny.manta.domain.user.Email
-import cz.matejcerny.manta.domain.String50
 
 case class User(
     email: Email,
