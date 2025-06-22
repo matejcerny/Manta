@@ -13,7 +13,7 @@ object UserEndpoint extends Schemas:
 
   val ListAllUsers: PublicEndpoint[Unit, (StatusCode, String), Seq[User], Any] =
     endpoint.get
-      .in("name")
+      .name("users")
       .in("users")
       .description("Returns all the users")
       .out(jsonBody[Seq[User]])

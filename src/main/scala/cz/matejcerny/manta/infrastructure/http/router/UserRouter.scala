@@ -1,7 +1,6 @@
 package cz.matejcerny.manta.infrastructure.http.router
 
 import cats.effect.IO
-import cz.matejcerny.manta.infrastructure.http.HttpServer.Routes
 import cz.matejcerny.manta.infrastructure.http.endpoint.internal.UserEndpoint
 import cz.matejcerny.manta.service.UserService
 import sttp.tapir.server.ServerEndpoint
