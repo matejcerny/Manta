@@ -4,24 +4,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup Scala using Coursier
-      uses: coursier/setup-action@v1
-      with:
-        apps: sbt
+      - name: Setup Scala using Coursier
+        uses: coursier/setup-action@v1
+        with:
+          apps: sbt
 
-    - name: Run tests
-      run: sbt coverage test
+      - name: Scalafmt
+        run: sbt scalafmtCheckAll
 
-    - name: Coverage Report
-      run: sbt coverageReport
+      - name: Run tests
+        run: sbt coverage test
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v5
-      with:
-        fail_ci_if_error: true
-        token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Coverage Report
+        run: sbt coverageAggregate
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
