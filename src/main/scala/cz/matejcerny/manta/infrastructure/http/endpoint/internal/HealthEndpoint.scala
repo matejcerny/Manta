@@ -1,17 +1,14 @@
-package cz.matejcerny.manta.infrastructure.http.endpoint
+package cz.matejcerny.manta.infrastructure.http.endpoint.internal
 
 import sttp.model.StatusCode
 import sttp.tapir.*
-import sttp.tapir.generic.auto.*
-import sttp.tapir.json.circe.*
 
-object HealthEndpoint {
+object HealthEndpoint:
 
   val GetHealth: PublicEndpoint[Unit, StatusCode, StatusCode, Any] =
     endpoint.get
+      .name("health")
       .in("health")
       .description("Health check endpoint")
       .out(statusCode)
       .errorOut(statusCode)
-
-}
