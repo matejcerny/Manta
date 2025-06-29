@@ -14,6 +14,8 @@ lazy val manta = project
         Doobie ++
         Flyway ++
         Http4s ++
+        Http4sJwt ++
+        Jwt ++
         Logging ++
         Tapir ++
         Testing

@@ -8,5 +8,8 @@ import sttp.tapir.server.ServerEndpoint
 
 class UserRouter(userService: UserService):
   val endpoints: List[ServerEndpoint[Any, IO]] = List(
-    UserEndpoint.ListAllUsers.serverLogic(_ => userService.listAllUsers.handleErrors)
+    UserEndpoint.ListAllUsers.serverLogic(_ => userService.listAllUsers.handleErrors),
+    UserEndpoint.CheckAuth
+      .serverSecurityLogic(_ => IO.pure(Right("Done")))
+      .serverLogic(_ => userService.checkAuth(_).handleErrors)
   )

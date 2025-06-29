@@ -6,3 +6,4 @@ import cz.matejcerny.manta.repository.UserRepository
 
 class UserService(userRepository: UserRepository):
   def listAllUsers: IO[Seq[User]] = userRepository.listAllUsers
+  def checkAuth(userId: UserId): IO[String] = IO.pure(s"Here we go! $userId")

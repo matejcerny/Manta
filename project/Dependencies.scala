@@ -8,8 +8,10 @@ object Dependencies {
     val Circe = "0.14.14"
     val Ciris = "3.9.0"
     val Doobie = "1.0.0-RC9"
-    val Flyway = "11.9.2"
+    val Flyway = "11.10.0"
     val Http4s = "0.23.30"
+    val Http4sJwt = "2.0.8"
+    val Jwt = "10.0.4"
     val Logback = "1.5.18"
     val Log4Cats = "2.7.1"
     val ScalaTest = "3.2.19"
@@ -23,7 +25,9 @@ object Dependencies {
     val Doobie = "org.tpolecat"
     val Flyway = "org.flywaydb"
     val Http4s = "org.http4s"
+    val Jwt = "com.github.jwt-scala"
     val Logback = "ch.qos.logback"
+    val Profunktor = "dev.profunktor"
     val ScalaTest = "org.scalatest"
     val Tapir = "com.softwaremill.sttp.tapir"
   }
@@ -58,6 +62,15 @@ object Dependencies {
     Modules.Http4s %% "http4s-ember-server",
     Modules.Http4s %% "http4s-circe"
   ).map(_ % Versions.Http4s)
+
+  val Http4sJwt: Seq[ModuleID] = Seq(
+    Modules.Profunktor %% "http4s-jwt-auth" % Versions.Http4sJwt
+  )
+
+  val Jwt: Seq[ModuleID] = Seq(
+    Modules.Jwt %% "jwt-core",
+    Modules.Jwt %% "jwt-circe"
+  ).map(_ % Versions.Jwt)
 
   val Logging: Seq[ModuleID] = Seq(
     Modules.Logback % "logback-classic" % Versions.Logback,
