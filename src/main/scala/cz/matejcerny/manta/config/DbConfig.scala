@@ -1,6 +1,6 @@
 package cz.matejcerny.manta.config
 
-import cats.effect.{ IO, Resource }
+import cats.effect.IO
 import cats.syntax.all.*
 import ciris.*
 import cz.matejcerny.manta.config.AppConfig.*

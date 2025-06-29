@@ -3,11 +3,11 @@ package cz.matejcerny.manta.config
 import cats.effect.{ IO, Resource }
 import cats.syntax.all.*
 import ciris.*
-import cz.matejcerny.manta.config.AppConfig.*
 
 case class AppConfig(
     http: HttpConfig,
-    db: DbConfig
+    db: DbConfig,
+    auth: AuthConfig
 )
 
 object AppConfig:
@@ -23,7 +23,11 @@ object AppConfig:
 
   def resource: Resource[IO, AppConfig] =
     Resource.eval(
-      (HttpConfig.load, DbConfig.load)
+      (
+        HttpConfig.load,
+        DbConfig.load,
+        AuthConfig.load
+      )
         .parMapN(AppConfig.apply)
         .load[IO]
     )
